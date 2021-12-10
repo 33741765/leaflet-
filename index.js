@@ -1,4 +1,3 @@
-// Import stylesheets
 import './style.css';
 import { Map } from 'leaflet';
 
@@ -13,8 +12,7 @@ const amap = new AMap.Map('amap', {
   zoomEnable: false,
   resizeEnable: true,
   doubleClickZoom: false,
-  keyboardEnable: false,
-  scrollWheel: false,
+  scrollWhell: false,
   expandZoomRange: true,
   zooms: [1, 20],
   mapStyle: 'normal',
@@ -23,3 +21,14 @@ const amap = new AMap.Map('amap', {
 });
 // 创建leaflet Map
 const map = new Map('map');
+
+map.on('zoom', (evt) => {
+  amap.setZoom(evt.target.getZoom());
+});
+
+map.on('move', (evt) => {
+  const pt = evt.target.getCenter();
+  amap.setZoomAndCenter(evt.target.getZoom(), [pt.lng, pt.lat]);
+});
+
+map.setView([39.909186, 116.397411], 10);
