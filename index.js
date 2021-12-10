@@ -15,14 +15,14 @@ const amap = new AMap.Map('amap', {
   scrollWhell: false,
   expandZoomRange: true,
   zooms: [1, 20],
-  mapStyle: 'normal',
+  // mapStyle: 'normal',
+  mapStyle: 'amap://styles/5dbb80fcacf7d1ee546a41e4a889095e',
   features: ['road', 'point', 'bg'],
   viewMode: '2D',
 });
-console.log('------', AMap);
+
 // 创建leaflet Map
 const map = new Map('map');
-console.log('leaflet---', Map);
 map.on('zoom', (evt) => {
   amap.setZoom(evt.target.getZoom());
 });
