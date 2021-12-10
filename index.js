@@ -19,9 +19,10 @@ const amap = new AMap.Map('amap', {
   features: ['road', 'point', 'bg'],
   viewMode: '2D',
 });
+console.log('------', AMap);
 // 创建leaflet Map
 const map = new Map('map');
-
+console.log('leaflet---', Map);
 map.on('zoom', (evt) => {
   amap.setZoom(evt.target.getZoom());
 });
