@@ -20,9 +20,11 @@ const amap = new AMap.Map('amap', {
   features: ['road', 'point', 'bg'],
   viewMode: '2D',
 });
-
 // 创建leaflet Map
-const map = new Map('map');
+const map = new Map('map', {
+  renderer: new Canvas(),
+});
+
 map.on('zoom', (evt) => {
   amap.setZoom(evt.target.getZoom());
 });
@@ -33,3 +35,11 @@ map.on('move', (evt) => {
 });
 
 map.setView([39.909186, 116.397411], 10);
+
+// 点 图标
+new Marker([39.909186, 116.397411],{
+  icon:new Icon({
+    iconUrl:
+    iconAnchor:[12,41]
+  })
+})
