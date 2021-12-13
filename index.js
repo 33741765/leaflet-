@@ -1,5 +1,13 @@
 import './style.css';
-import { Map } from 'leaflet';
+import {
+  Map,
+  Canvas,
+  Marker,
+  Icon,
+  CircleMarker,
+  Polyline,
+  Polygon,
+} from 'leaflet';
 
 // Write Javascript code!
 // 创建高德Map
@@ -37,9 +45,26 @@ map.on('move', (evt) => {
 map.setView([39.909186, 116.397411], 10);
 
 // 点 图标
-new Marker([39.909186, 116.397411],{
-  icon:new Icon({
-    iconUrl:
-    iconAnchor:[12,41]
-  })
-})
+new Marker([39.909186, 116.397411], {
+  icon: new Icon({
+    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+    iconAnchor: [12, 41],
+  }),
+}).addTo(map);
+
+// 点 圆点
+new CircleMarker([39.909186, 116.457411]).addTo(map);
+
+//线
+new Polyline([
+  [39.909186, 116.457411],
+  [39.999186, 116.457411],
+]).addTo(map);
+
+// 面
+new Polygon([
+  [39.999186, 116.507411],
+  [39.999186, 116.407411],
+  [40.099186, 116.407411],
+  [40.099186, 116.507411],
+]).addTo(map);
